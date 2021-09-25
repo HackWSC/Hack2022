@@ -97,7 +97,7 @@ controller.sendVerificationEmail = function(email, token, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
@@ -114,6 +114,38 @@ controller.sendVerificationEmail = function(email, token, callback) {
     }
   });
 
+};
+
+/**
+  confirmationUrl: ROOT_URL + '/confirmation'
+*/
+
+controller.sendConfirmationEmail = function(email, callback) {
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - You're in."
+  };
+
+  var locals = {
+    title: 'You\'re in.',
+    subtitle: 'Congrats! You\'ve been accepted to ' + HACKATHON_NAME + '!',
+    description: 'Please make sure you confirm your application by clicking the button below. ' +
+      'By not confirming your application, you will not be able to take part in the hackathon.',
+    actionUrl: ROOT_URL + '/confirmation',
+    actionName: 'Confirm Application'
+  };
+
+  sendOne('email-link-action', options, locals, function(err, info) {
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
 };
 
 /**
@@ -139,7 +171,7 @@ controller.sendPasswordResetEmail = function(email, token, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
@@ -176,7 +208,7 @@ controller.sendPasswordChangedEmail = function(email, callback){
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
