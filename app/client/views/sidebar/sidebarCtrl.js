@@ -71,10 +71,6 @@ angular.module('reg')
                     });
             };
 
-            $scope.removeUpdate = function(){
-                ///
-            };
-
             function getUpdates(){
                 UpdatesService
                     .getUpdates($scope.updates.length)
