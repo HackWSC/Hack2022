@@ -7,7 +7,10 @@ EXPOSE 3000
 COPY . .
 
 # Install node_modules
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
 RUN npm install
+
 RUN ./node_modules/.bin/gulp build
 
 CMD node app.js
