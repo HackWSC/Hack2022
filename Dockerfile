@@ -7,7 +7,6 @@ EXPOSE 3000
 COPY . .
 
 # Install node_modules
-RUN npm install --python=python2.7
 RUN npm install
 RUN ./node_modules/.bin/gulp build
 
