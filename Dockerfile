@@ -7,7 +7,7 @@ EXPOSE 3000
 COPY . .
 
 # Install node_modules
-RUN npm install
+RUN npm install --global --production windows-build-tools
 RUN ./node_modules/.bin/gulp build
 
 CMD node app.js
