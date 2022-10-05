@@ -8,7 +8,6 @@ COPY . .
 
 # Install node_modules
 RUN npm install
-run npm audit fix
 RUN ./node_modules/.bin/gulp build
 
 CMD node app.js
