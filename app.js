@@ -20,7 +20,7 @@ var updatesConfig   = require('./config/updates');
 var app             = express();
 
 // Connect to mongodb
-mongoose.connect(database);
+mongoose.connect(database, { useNewUrlParser: true,useUnifiedTopology: true, 'useCreateIndex': true });
 
 app.use(morgan('dev'));
 
